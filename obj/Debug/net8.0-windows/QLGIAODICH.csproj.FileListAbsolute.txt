@@ -76,3 +76,4 @@ D:\C#\QLGIAODICH\QLGIAODICH\obj\Debug\net8.0-windows\QLGIAODICH.LichSuGiaoDich.r
 D:\C#\QLGIAODICH\QLGIAODICH\obj\Debug\net8.0-windows\QLGIAODICH.NguoiDung.resources
 D:\C#\QLGIAODICH\QLGIAODICH\obj\Debug\net8.0-windows\QLGIAODICH.ChuyenKhoan.resources
 D:\C#\QLGIAODICH\QLGIAODICH\obj\Debug\net8.0-windows\QLGIAODICH.RutTien.resources
+D:\C#\QLGIAODICH\QLGIAODICH\obj\Debug\net8.0-windows\QLGIAODICH.sourcelink.json

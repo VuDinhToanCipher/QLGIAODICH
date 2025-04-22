@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using QLGIAODICH.Helper;
 using QLGIAODICH.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -33,7 +34,7 @@ namespace QLGIAODICH
             string query = @"
             SELECT nd.IDNguoiDung, nd.TenNguoiDung, nd.Email, nd.SoDienThoai, nd.DiaChi, nd.LoaiNguoiDung, nd.CCCD, nd.NgaySinh
             FROM tblTaiKhoan tk
-            JOIN thbNguoiDung nd ON tk.IDNguoiDung = nd.IDNguoiDung
+            JOIN tblNguoiDung nd ON tk.IDNguoiDung = nd.IDNguoiDung
             WHERE tk.SoTaiKhoan = @value
             ";
             string query1 = @"
@@ -50,7 +51,7 @@ namespace QLGIAODICH
             panel1.Width = this.ClientSize.Width / 2;
             panel2.Width = this.ClientSize.Width / 4;
             panel3.Width = this.ClientSize.Width / 4;
-            
+
             dtGridViewconfig.DTconfig(dtNguoidung);
             dtGridViewconfig.DTconfig(dtTaikhoan);
         }
@@ -195,10 +196,31 @@ namespace QLGIAODICH
             e.Graphics.Clear(panel1.BackColor); // Xoá đường cũ
 
             Pen pen = new Pen(Color.Black, 5);
-            int x1 = (int)(panel1.Width *1);
-            
+            int x1 = (int)(panel1.Width * 1);
+
             e.Graphics.DrawLine(pen, x1, 0, x1, panel1.Height);
-         
+
+        }
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO tblTaiKhoan(IDNguoiDung,TenTaiKhoan,MatKhau,SoTaiKhoan,SoDu" +
+                "VALUES(@IDNguoiDung,@TenTaiKhoan,@MatKhau,@SoTaiKhoan,@SoDu)";
+            foreach(Control control in pnThemTK.Controls)
+            {
+                if (control is TextBox txt)
+                {
+                    if (string.IsNullOrEmpty(txt.Text))
+                    {
+                        MessageBox.Show("Vui Long Nhap Day Du Thong Tin");
+                        return;
+                    }
+                }
+            }
         }
     }
 }

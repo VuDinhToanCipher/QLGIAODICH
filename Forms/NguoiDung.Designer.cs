@@ -52,6 +52,14 @@
             dtTaikhoan = new DataGridView();
             groupBox2 = new GroupBox();
             panel1 = new Panel();
+            pnThemTK = new Panel();
+            btnXacNhan = new Button();
+            label11 = new Label();
+            label8 = new Label();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            Addcard = new Button();
+            btnAddAccount = new Button();
             panel3 = new Panel();
             button1 = new Button();
             tbMK = new TextBox();
@@ -59,21 +67,20 @@
             label9 = new Label();
             label10 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            btnAddAccount = new Button();
-            Addcard = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtNguoidung).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtTaikhoan).BeginInit();
             groupBox2.SuspendLayout();
             panel1.SuspendLayout();
+            pnThemTK.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.LightCoral;
-            btnDelete.Location = new Point(12, 475);
+            btnDelete.Location = new Point(39, 475);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(131, 46);
             btnDelete.TabIndex = 3;
@@ -82,7 +89,7 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(324, 32);
+            btnSearch.Location = new Point(408, 32);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(136, 29);
             btnSearch.TabIndex = 2;
@@ -92,7 +99,7 @@
             // 
             // txtSearchStk
             // 
-            txtSearchStk.Location = new Point(25, 32);
+            txtSearchStk.Location = new Point(66, 32);
             txtSearchStk.Name = "txtSearchStk";
             txtSearchStk.Size = new Size(272, 27);
             txtSearchStk.TabIndex = 1;
@@ -118,7 +125,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(547, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(429, 624);
+            panel2.Size = new Size(429, 779);
             panel2.TabIndex = 1;
             // 
             // label7
@@ -247,17 +254,17 @@
             // 
             dtNguoidung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtNguoidung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtNguoidung.Location = new Point(0, 0);
+            dtNguoidung.Location = new Point(0, 26);
             dtNguoidung.Name = "dtNguoidung";
             dtNguoidung.RowHeadersWidth = 51;
-            dtNguoidung.Size = new Size(532, 125);
+            dtNguoidung.Size = new Size(523, 99);
             dtNguoidung.TabIndex = 0;
             dtNguoidung.CellContentClick += dtNguoidung_CellContentClick;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(dtNguoidung);
-            groupBox1.Location = new Point(12, 90);
+            groupBox1.Location = new Point(45, 90);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(532, 125);
             groupBox1.TabIndex = 4;
@@ -271,16 +278,16 @@
             dtTaikhoan.Location = new Point(3, 23);
             dtTaikhoan.Name = "dtTaikhoan";
             dtTaikhoan.RowHeadersWidth = 51;
-            dtTaikhoan.Size = new Size(520, 182);
+            dtTaikhoan.Size = new Size(520, 169);
             dtTaikhoan.TabIndex = 0;
             dtTaikhoan.CellContentClick += dtTaikhoan_CellContentClick;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(dtTaikhoan);
-            groupBox2.Location = new Point(12, 237);
+            groupBox2.Location = new Point(39, 237);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(529, 211);
+            groupBox2.Size = new Size(529, 198);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tài khoản";
@@ -288,6 +295,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(pnThemTK);
             panel1.Controls.Add(Addcard);
             panel1.Controls.Add(btnAddAccount);
             panel1.Controls.Add(groupBox2);
@@ -298,9 +306,84 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(547, 624);
+            panel1.Size = new Size(547, 779);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // pnThemTK
+            // 
+            pnThemTK.Controls.Add(btnXacNhan);
+            pnThemTK.Controls.Add(label11);
+            pnThemTK.Controls.Add(label8);
+            pnThemTK.Controls.Add(textBox2);
+            pnThemTK.Controls.Add(textBox1);
+            pnThemTK.Location = new Point(12, 547);
+            pnThemTK.Name = "pnThemTK";
+            pnThemTK.Size = new Size(529, 152);
+            pnThemTK.TabIndex = 8;
+            // 
+            // btnXacNhan
+            // 
+            btnXacNhan.Location = new Point(396, 85);
+            btnXacNhan.Name = "btnXacNhan";
+            btnXacNhan.Size = new Size(130, 39);
+            btnXacNhan.TabIndex = 4;
+            btnXacNhan.Text = "Xác nhận";
+            btnXacNhan.UseVisualStyleBackColor = true;
+            btnXacNhan.Click += button2_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(3, 74);
+            label11.Name = "label11";
+            label11.Size = new Size(90, 20);
+            label11.TabIndex = 3;
+            label11.Text = "Thêm số dư:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(0, 7);
+            label8.Name = "label8";
+            label8.Size = new Size(100, 20);
+            label8.TabIndex = 2;
+            label8.Text = "Tên tài khoản:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(3, 97);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(242, 27);
+            textBox2.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(3, 30);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(242, 27);
+            textBox1.TabIndex = 0;
+            // 
+            // Addcard
+            // 
+            Addcard.BackColor = Color.Turquoise;
+            Addcard.Location = new Point(398, 475);
+            Addcard.Name = "Addcard";
+            Addcard.Size = new Size(146, 46);
+            Addcard.TabIndex = 7;
+            Addcard.Text = "Thêm thẻ";
+            Addcard.UseVisualStyleBackColor = false;
+            // 
+            // btnAddAccount
+            // 
+            btnAddAccount.BackColor = Color.LimeGreen;
+            btnAddAccount.Location = new Point(208, 475);
+            btnAddAccount.Name = "btnAddAccount";
+            btnAddAccount.Size = new Size(147, 46);
+            btnAddAccount.TabIndex = 6;
+            btnAddAccount.Text = "Thêm tài khoản";
+            btnAddAccount.UseVisualStyleBackColor = false;
+            btnAddAccount.Click += btnAddAccount_Click;
             // 
             // panel3
             // 
@@ -313,7 +396,7 @@
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(976, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(370, 624);
+            panel3.Size = new Size(370, 779);
             panel3.TabIndex = 34;
             // 
             // button1
@@ -358,31 +441,11 @@
             label10.TabIndex = 33;
             label10.Text = "Tên Tài khoản: :";
             // 
-            // btnAddAccount
-            // 
-            btnAddAccount.BackColor = Color.LimeGreen;
-            btnAddAccount.Location = new Point(191, 475);
-            btnAddAccount.Name = "btnAddAccount";
-            btnAddAccount.Size = new Size(147, 46);
-            btnAddAccount.TabIndex = 6;
-            btnAddAccount.Text = "Thêm tài khoản";
-            btnAddAccount.UseVisualStyleBackColor = false;
-            // 
-            // Addcard
-            // 
-            Addcard.BackColor = Color.Turquoise;
-            Addcard.Location = new Point(389, 475);
-            Addcard.Name = "Addcard";
-            Addcard.Size = new Size(146, 46);
-            Addcard.TabIndex = 7;
-            Addcard.Text = "Thêm thẻ";
-            Addcard.UseVisualStyleBackColor = false;
-            // 
             // NguoiDung
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 624);
+            ClientSize = new Size(1300, 779);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -398,6 +461,8 @@
             groupBox2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            pnThemTK.ResumeLayout(false);
+            pnThemTK.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -437,5 +502,11 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button Addcard;
         private Button btnAddAccount;
+        private Panel pnThemTK;
+        private TextBox textBox1;
+        private Button btnXacNhan;
+        private Label label11;
+        private Label label8;
+        private TextBox textBox2;
     }
 }

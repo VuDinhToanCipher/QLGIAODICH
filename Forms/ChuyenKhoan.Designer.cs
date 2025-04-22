@@ -54,6 +54,7 @@
             btnXacNhan = new Button();
             textBox3 = new TextBox();
             groupBox2 = new GroupBox();
+            comboBox1 = new ComboBox();
             txbTaiKhoanNhan = new TextBox();
             btnSearchTKN = new Button();
             dtTKN = new DataGridView();
@@ -65,7 +66,6 @@
             dtTK = new DataGridView();
             txtSTK = new TextBox();
             btnTim = new Button();
-            comboBox1 = new ComboBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -353,6 +353,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Tài Khoản Nhận";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(283, 29);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(160, 36);
+            comboBox1.TabIndex = 5;
+            comboBox1.Text = "Ngân Hàng";
+            // 
             // txbTaiKhoanNhan
             // 
             txbTaiKhoanNhan.Location = new Point(16, 31);
@@ -412,16 +421,16 @@
             // 
             // txbTaiKhoan
             // 
-            txbTaiKhoan.Location = new Point(61, 39);
+            txbTaiKhoan.Location = new Point(19, 33);
             txbTaiKhoan.Name = "txbTaiKhoan";
-            txbTaiKhoan.Size = new Size(280, 34);
+            txbTaiKhoan.Size = new Size(261, 34);
             txbTaiKhoan.TabIndex = 4;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(359, 26);
+            btnSearch.Location = new Point(286, 33);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(144, 47);
+            btnSearch.Size = new Size(160, 36);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
@@ -452,15 +461,6 @@
             btnTim.TabIndex = 1;
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(283, 29);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 36);
-            comboBox1.TabIndex = 5;
-            comboBox1.Text = "Ngân Hàng";
             // 
             // ChuyenKhoan
             // 
