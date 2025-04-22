@@ -66,6 +66,7 @@
             dtTK = new DataGridView();
             txtSTK = new TextBox();
             btnTim = new Button();
+            comboBox2 = new ComboBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -407,6 +408,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(txbTaiKhoan);
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(dtTK);
@@ -423,12 +425,12 @@
             // 
             txbTaiKhoan.Location = new Point(19, 33);
             txbTaiKhoan.Name = "txbTaiKhoan";
-            txbTaiKhoan.Size = new Size(261, 34);
+            txbTaiKhoan.Size = new Size(174, 34);
             txbTaiKhoan.TabIndex = 4;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(286, 33);
+            btnSearch.Location = new Point(356, 30);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(160, 36);
             btnSearch.TabIndex = 3;
@@ -461,6 +463,15 @@
             btnTim.TabIndex = 1;
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Căn cước", "Số Tài Khoản" });
+            comboBox2.Location = new Point(199, 30);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(151, 36);
+            comboBox2.TabIndex = 5;
             // 
             // ChuyenKhoan
             // 
@@ -524,5 +535,6 @@
         private TextBox textBox1;
         private TextBox textBox3;
         private ComboBox comboBox1;
+        private ComboBox comboBox2;
     }
 }

@@ -56,6 +56,7 @@
             dateTimePicker1 = new DateTimePicker();
             btnSearch = new Button();
             textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
             pnData.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtLichsu).BeginInit();
@@ -273,6 +274,7 @@
             // pnThanhcongcu
             // 
             pnThanhcongcu.BackColor = SystemColors.ControlLight;
+            pnThanhcongcu.Controls.Add(comboBox1);
             pnThanhcongcu.Controls.Add(btnReload);
             pnThanhcongcu.Controls.Add(label3);
             pnThanhcongcu.Controls.Add(label2);
@@ -344,9 +346,9 @@
             // btnSearch
             // 
             btnSearch.Image = Properties.Resources.Search;
-            btnSearch.Location = new Point(462, 5);
+            btnSearch.Location = new Point(466, 43);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 113);
+            btnSearch.Size = new Size(94, 82);
             btnSearch.TabIndex = 1;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.TextAlign = ContentAlignment.BottomCenter;
@@ -360,6 +362,15 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(266, 42);
             textBox1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            comboBox1.Location = new Point(444, 9);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(143, 28);
+            comboBox1.TabIndex = 8;
             // 
             // LichSuGiaoDich
             // 
@@ -414,5 +425,6 @@
         private Label lbSTKN;
         private Label label9;
         private ComboBox cbReport;
+        private ComboBox comboBox1;
     }
 }

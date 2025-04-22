@@ -17,12 +17,16 @@ namespace QLGIAODICH
     public partial class NguoiDung : Form
     {
         string SQLConnectionstring = @"Data Source=TOANVU;Initial Catalog=QLGIAODICH;Integrated Security=True;Trust Server Certificate=True";
-
         Search timkiem;
         int selectedUserId;
         int selectestk;
+        bool swicth = false;
+        RandSTK stk;
+        RandPassword password;
         public NguoiDung()
         {
+            password = new RandPassword();
+            stk = new RandSTK(SQLConnectionstring);
             timkiem = new Search(SQLConnectionstring);
             InitializeComponent();
         }
@@ -203,13 +207,22 @@ namespace QLGIAODICH
         }
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            
+            swicth = !swicth;
+            if (swicth)
+            {
+                pnThemTK.Visible = true;
+            }
+            else
+            {
+                pnThemTK.Visible = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO tblTaiKhoan(IDNguoiDung,TenTaiKhoan,MatKhau,SoTaiKhoan,SoDu" +
-                "VALUES(@IDNguoiDung,@TenTaiKhoan,@MatKhau,@SoTaiKhoan,@SoDu)";
+            DialogResult result = MessageBox.Show("Xác nhận thêm tài khoản","Đồng ý",
+                MessageBoxButtons.YesNo);
+            string query = "INSERT INTO tblTaiKhoan(IDNguoiDung,TenTaiKhoan,MatKhau,SoTaiKhoan,SoDu) "+"VALUES(@IDNguoiDung,@TenTaiKhoan,@MatKhau,@SoTaiKhoan,@SoDu)";
             foreach(Control control in pnThemTK.Controls)
             {
                 if (control is TextBox txt)
@@ -220,6 +233,37 @@ namespace QLGIAODICH
                         return;
                     }
                 }
+            }
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    if (string.IsNullOrEmpty(selectedUserId.ToString()))
+                    {
+                        using (SqlConnection conn = new SqlConnection(SQLConnectionstring))
+                        {
+                            conn.Open();
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("IDNguoiDung", selectedUserId);
+                                cmd.Parameters.AddWithValue("@TenTaiKhoan", txtName.Text);
+                                cmd.Parameters.AddWithValue("@MatKhau", password.GenerateRandomPassword().ToString());
+                                cmd.Parameters.AddWithValue("@SoTaiKhoan", stk.SoTaiKhoan("tblTaiKhoan", "SoTaiKhoan").ToString());
+                                cmd.Parameters.AddWithValue("@SoDu", txtBalance.Text);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Chon Nguoi Dung Di Bro");
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } 
             }
         }
     }

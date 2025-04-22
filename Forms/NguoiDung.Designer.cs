@@ -56,8 +56,8 @@
             btnXacNhan = new Button();
             label11 = new Label();
             label8 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtBalance = new TextBox();
+            txtName = new TextBox();
             Addcard = new Button();
             btnAddAccount = new Button();
             panel3 = new Panel();
@@ -67,6 +67,7 @@
             label9 = new Label();
             label10 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            comboBox1 = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtNguoidung).BeginInit();
             groupBox1.SuspendLayout();
@@ -99,9 +100,9 @@
             // 
             // txtSearchStk
             // 
-            txtSearchStk.Location = new Point(66, 32);
+            txtSearchStk.Location = new Point(45, 32);
             txtSearchStk.Name = "txtSearchStk";
-            txtSearchStk.Size = new Size(272, 27);
+            txtSearchStk.Size = new Size(227, 27);
             txtSearchStk.TabIndex = 1;
             // 
             // panel2
@@ -295,6 +296,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(pnThemTK);
             panel1.Controls.Add(Addcard);
             panel1.Controls.Add(btnAddAccount);
@@ -315,8 +317,8 @@
             pnThemTK.Controls.Add(btnXacNhan);
             pnThemTK.Controls.Add(label11);
             pnThemTK.Controls.Add(label8);
-            pnThemTK.Controls.Add(textBox2);
-            pnThemTK.Controls.Add(textBox1);
+            pnThemTK.Controls.Add(txtBalance);
+            pnThemTK.Controls.Add(txtName);
             pnThemTK.Location = new Point(12, 547);
             pnThemTK.Name = "pnThemTK";
             pnThemTK.Size = new Size(529, 152);
@@ -324,7 +326,7 @@
             // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(396, 85);
+            btnXacNhan.Location = new Point(396, 96);
             btnXacNhan.Name = "btnXacNhan";
             btnXacNhan.Size = new Size(130, 39);
             btnXacNhan.TabIndex = 4;
@@ -350,19 +352,19 @@
             label8.TabIndex = 2;
             label8.Text = "Tên tài khoản:";
             // 
-            // textBox2
+            // txtBalance
             // 
-            textBox2.Location = new Point(3, 97);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 27);
-            textBox2.TabIndex = 1;
+            txtBalance.Location = new Point(52, 108);
+            txtBalance.Name = "txtBalance";
+            txtBalance.Size = new Size(242, 27);
+            txtBalance.TabIndex = 1;
             // 
-            // textBox1
+            // txtName
             // 
-            textBox1.Location = new Point(3, 30);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 27);
-            textBox1.TabIndex = 0;
+            txtName.Location = new Point(52, 30);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(242, 27);
+            txtName.TabIndex = 0;
             // 
             // Addcard
             // 
@@ -441,6 +443,15 @@
             label10.TabIndex = 33;
             label10.Text = "Tên Tài khoản: :";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            comboBox1.Location = new Point(278, 33);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(124, 28);
+            comboBox1.TabIndex = 9;
+            // 
             // NguoiDung
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -503,10 +514,11 @@
         private Button Addcard;
         private Button btnAddAccount;
         private Panel pnThemTK;
-        private TextBox textBox1;
+        private TextBox txtName;
         private Button btnXacNhan;
         private Label label11;
         private Label label8;
-        private TextBox textBox2;
+        private TextBox txtBalance;
+        private ComboBox comboBox1;
     }
 }

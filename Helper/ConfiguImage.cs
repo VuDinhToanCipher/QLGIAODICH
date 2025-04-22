@@ -10,7 +10,7 @@ namespace QLGIAODICH.Helper
     {
         public static void resizeimg_inbutton(Button button,int x,int y)
         {
-            button.Image = new Bitmap(button.Image, new Size(x, y));
+            button.Image = new Bitmap(button.Image!, new Size(x, y));
         }
     }
 }

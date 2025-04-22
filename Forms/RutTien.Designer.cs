@@ -53,6 +53,7 @@
             label3 = new Label();
             label = new Label();
             label1 = new Label();
+            comboBox1 = new ComboBox();
             pn1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtTK).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(txtTaiKhoan);
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(dtTK);
@@ -85,9 +87,9 @@
             // 
             // txtTaiKhoan
             // 
-            txtTaiKhoan.Location = new Point(57, 47);
+            txtTaiKhoan.Location = new Point(6, 47);
             txtTaiKhoan.Name = "txtTaiKhoan";
-            txtTaiKhoan.Size = new Size(377, 34);
+            txtTaiKhoan.Size = new Size(282, 34);
             txtTaiKhoan.TabIndex = 4;
             // 
             // btnSearch
@@ -95,10 +97,10 @@
             btnSearch.BackColor = Color.LightBlue;
             btnSearch.Image = Properties.Resources.Search;
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(464, 35);
+            btnSearch.Location = new Point(475, 44);
             btnSearch.Margin = new Padding(0);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(148, 43);
+            btnSearch.Size = new Size(133, 36);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
@@ -319,6 +321,15 @@
             label1.TabIndex = 34;
             label1.Text = "BIÊN LAI";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            comboBox1.Location = new Point(308, 45);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(153, 36);
+            comboBox1.TabIndex = 7;
+            // 
             // RutTien
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -366,5 +377,6 @@
         private Label label3;
         private Label label;
         private Label label1;
+        private ComboBox comboBox1;
     }
 }
