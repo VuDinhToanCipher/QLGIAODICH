@@ -48,6 +48,7 @@
             label5 = new Label();
             label4 = new Label();
             pnThanhcongcu = new Panel();
+            comboBox1 = new ComboBox();
             btnReload = new Button();
             label3 = new Label();
             label2 = new Label();
@@ -56,7 +57,6 @@
             dateTimePicker1 = new DateTimePicker();
             btnSearch = new Button();
             textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
             pnData.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtLichsu).BeginInit();
@@ -110,10 +110,8 @@
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.ButtonFace;
-            groupBox2.Controls.Add(cbReport);
             groupBox2.Controls.Add(lbSTKN);
             groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(btnExport);
             groupBox2.Controls.Add(lbTime);
             groupBox2.Controls.Add(lbSotien);
             groupBox2.Controls.Add(lbType);
@@ -136,9 +134,9 @@
             // 
             cbReport.FormattingEnabled = true;
             cbReport.Items.AddRange(new object[] { "Lịch sử giao dịch", "Thông tin CT" });
-            cbReport.Location = new Point(448, 368);
+            cbReport.Location = new Point(912, 75);
             cbReport.Name = "cbReport";
-            cbReport.Size = new Size(124, 28);
+            cbReport.Size = new Size(199, 28);
             cbReport.TabIndex = 13;
             // 
             // lbSTKN
@@ -163,9 +161,9 @@
             // 
             // btnExport
             // 
-            btnExport.Location = new Point(448, 402);
+            btnExport.Location = new Point(937, 109);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(124, 46);
+            btnExport.Size = new Size(142, 46);
             btnExport.TabIndex = 5;
             btnExport.Text = "Xuất báo cáo";
             btnExport.UseVisualStyleBackColor = true;
@@ -274,9 +272,11 @@
             // pnThanhcongcu
             // 
             pnThanhcongcu.BackColor = SystemColors.ControlLight;
+            pnThanhcongcu.Controls.Add(cbReport);
             pnThanhcongcu.Controls.Add(comboBox1);
             pnThanhcongcu.Controls.Add(btnReload);
             pnThanhcongcu.Controls.Add(label3);
+            pnThanhcongcu.Controls.Add(btnExport);
             pnThanhcongcu.Controls.Add(label2);
             pnThanhcongcu.Controls.Add(label1);
             pnThanhcongcu.Controls.Add(dateTimePicker2);
@@ -287,6 +287,15 @@
             pnThanhcongcu.Name = "pnThanhcongcu";
             pnThanhcongcu.Size = new Size(1139, 167);
             pnThanhcongcu.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            comboBox1.Location = new Point(444, 9);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(143, 28);
+            comboBox1.TabIndex = 8;
             // 
             // btnReload
             // 
@@ -362,15 +371,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(266, 42);
             textBox1.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(444, 9);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(143, 28);
-            comboBox1.TabIndex = 8;
             // 
             // LichSuGiaoDich
             // 

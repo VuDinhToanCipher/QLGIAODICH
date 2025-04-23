@@ -20,12 +20,13 @@ namespace QLGIAODICH
         CloseandOpenForms closeopen = new CloseandOpenForms();
         Search timkiem;
         CapNhatlichsugiaodich updateLS;
-        string STK;
+        
         private Form[] listF = new Form[2];
+        string tk;
         public GiaoDich()
         {
             updateLS = new CapNhatlichsugiaodich(SQLConnectionstring);
-            STK = "";
+            tk = "";
             timkiem = new Search(SQLConnectionstring);
             InitializeComponent();
         }
@@ -70,7 +71,17 @@ namespace QLGIAODICH
         {
             string value = txtTaiKhoan.Text.Trim();
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
-            dtTK.DataSource = timkiem.Timkiem(query, value);
+          
+            string query1 = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan AS tk INNER JOIN tblNguoiDung as nd ON tk.IDNguoiDung = nd.IDNguoiDung WHERE CCCD = @value ";
+
+            if (cbTimTk.Text == "Căn Cước")
+            {
+                dtTK.DataSource = timkiem.Timkiem(query1, value);
+            }
+            else
+            {
+                dtTK.DataSource = timkiem.Timkiem(query, value);
+            }
         }
         private void dtTK_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -79,6 +90,8 @@ namespace QLGIAODICH
                 var row = dtTK.Rows[e.RowIndex];
                 lbUserName.Text = row.Cells["TenTaiKhoan"].Value.ToString();
                 lbSTK.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                txtSelect.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                tk = txtSelect.Text;
             }
         }
         private void txtSoTien_TextChanged_1(object sender, EventArgs e)
@@ -103,8 +116,8 @@ namespace QLGIAODICH
                 MessageBoxIcon.Question);
 
             decimal sotiengui;
-            STK = txtTaiKhoan.Text.Trim();
-            if (STK.IsNullOrEmpty())
+           
+            if (tk.IsNullOrEmpty())
             {
                 MessageBox.Show("Hãy nhập số tài khoản để thực hiện giao dịch");
                 return;
@@ -127,7 +140,7 @@ namespace QLGIAODICH
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
                             cmd.Parameters.AddWithValue("@Sodu", sotiengui);
-                            cmd.Parameters.AddWithValue("@STK", STK);
+                            cmd.Parameters.AddWithValue("@STK", tk);
                             cmd.ExecuteNonQuery();
                         }
                         MessageBox.Show("Cập nhật số dư thành công!");
@@ -139,7 +152,7 @@ namespace QLGIAODICH
                         }
                     }
                 }
-                updateLS.GDGuiTien(STK, sotiengui);
+                updateLS.GDGuiTien(tk, sotiengui);
             }
         }
     }

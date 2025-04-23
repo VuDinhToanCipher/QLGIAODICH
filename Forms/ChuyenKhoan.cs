@@ -18,7 +18,9 @@ namespace QLGIAODICH
     {
         Search timkiem;
         CapNhatlichsugiaodich updateLS;
+        string tkGui;
         string SQLConnectionstring = @"Data Source=TOANVU;Initial Catalog=QLGIAODICH;Integrated Security=True;Trust Server Certificate=True";
+       
         public ChuyenKhoan()
         {
             updateLS = new CapNhatlichsugiaodich(SQLConnectionstring);
@@ -39,7 +41,16 @@ namespace QLGIAODICH
         {
             string value = txbTaiKhoan.Text.Trim();
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
-            dtTK.DataSource = timkiem.Timkiem(query, value);
+            string query1 = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan AS tk INNER JOIN tblNguoiDung as nd ON tk.IDNguoiDung = nd.IDNguoiDung WHERE CCCD = @value ";
+            
+            if(cbTimTk.Text == "Căn cước")
+            {
+                dtTK.DataSource = timkiem.Timkiem(query1, value);
+            }
+            else
+            {
+                dtTK.DataSource = timkiem.Timkiem(query, value);
+            }
         }
         private void btnSearchTKN_Click_1(object sender, EventArgs e)
         {
@@ -54,6 +65,8 @@ namespace QLGIAODICH
                 var row = dtTK.Rows[e.RowIndex];
                 lbNguoigui.Text = row.Cells["TenTaiKhoan"].Value.ToString();
                 lbSTKG.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                txttkdc.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                tkGui = txttkdc.Text;
             }
         }
         private void btnXacNhan_Click_1(object sender, EventArgs e)
@@ -64,7 +77,7 @@ namespace QLGIAODICH
                MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string STK = txbTaiKhoan.Text.Trim();
+                
                 string STKN = txbTaiKhoanNhan.Text.Trim();
                 int soTien;
                 if (string.IsNullOrEmpty(txbTaiKhoan.Text) || string.IsNullOrEmpty(txbTaiKhoanNhan.Text))
@@ -90,7 +103,7 @@ namespace QLGIAODICH
                             using (SqlCommand cmdG = new SqlCommand(querry, conn, trans))
                             {
                                 cmdG.Parameters.AddWithValue("@Sodu", soTien);
-                                cmdG.Parameters.AddWithValue("@SoTaiKhoan", STK);
+                                cmdG.Parameters.AddWithValue("@SoTaiKhoan", tkGui);
                                 cmdG.ExecuteNonQuery();
                             }
                             using (SqlCommand cmdG = new SqlCommand(query, conn, trans))
@@ -108,7 +121,7 @@ namespace QLGIAODICH
                             MessageBox.Show("Giao dịch thất bại: " + ex.Message);
                         }
                     }
-                    updateLS.GDChuyenkhoan(STK, STKN, soTien);
+                    updateLS.GDChuyenkhoan(tkGui, STKN, soTien);
                 }
                 catch (Exception ex)
                 {

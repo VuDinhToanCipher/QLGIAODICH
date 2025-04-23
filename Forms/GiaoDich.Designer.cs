@@ -55,12 +55,14 @@
             txtSoTien = new TextBox();
             btnGui = new Button();
             groupBox1 = new GroupBox();
+            cbTimTk = new ComboBox();
             dtTK = new DataGridView();
             txtTaiKhoan = new TextBox();
             btnSearch = new Button();
             txtSTK = new TextBox();
             btnTim = new Button();
-            comboBox1 = new ComboBox();
+            txtSelect = new TextBox();
+            label2 = new Label();
             panel1.SuspendLayout();
             pnGiaoDich.SuspendLayout();
             pn2.SuspendLayout();
@@ -353,7 +355,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(txtSelect);
+            groupBox1.Controls.Add(cbTimTk);
             groupBox1.Controls.Add(dtTK);
             groupBox1.Controls.Add(txtTaiKhoan);
             groupBox1.Controls.Add(btnSearch);
@@ -366,6 +370,15 @@
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tài Khoản";
+            // 
+            // cbTimTk
+            // 
+            cbTimTk.FormattingEnabled = true;
+            cbTimTk.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            cbTimTk.Location = new Point(280, 37);
+            cbTimTk.Name = "cbTimTk";
+            cbTimTk.Size = new Size(169, 36);
+            cbTimTk.TabIndex = 6;
             // 
             // dtTK
             // 
@@ -415,14 +428,21 @@
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // txtSelect
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(280, 37);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(169, 36);
-            comboBox1.TabIndex = 6;
+            txtSelect.Location = new Point(17, 268);
+            txtSelect.Name = "txtSelect";
+            txtSelect.Size = new Size(362, 34);
+            txtSelect.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(385, 271);
+            label2.Name = "label2";
+            label2.Size = new Size(228, 28);
+            label2.TabIndex = 8;
+            label2.Text = "Tài khoản chọn giao dịch";
             // 
             // GiaoDich
             // 
@@ -480,6 +500,8 @@
         private Button btnXNID;
         private TextBox textBox2;
         private TextBox textBox1;
-        private ComboBox comboBox1;
+        private ComboBox cbTimTk;
+        private Label label2;
+        private TextBox txtSelect;
     }
 }

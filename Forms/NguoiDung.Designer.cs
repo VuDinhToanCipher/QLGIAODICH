@@ -52,6 +52,20 @@
             dtTaikhoan = new DataGridView();
             groupBox2 = new GroupBox();
             panel1 = new Panel();
+            btnTimthe = new Button();
+            txtTimthe = new TextBox();
+            label15 = new Label();
+            groupBox3 = new GroupBox();
+            dtThe = new DataGridView();
+            pnAdd_card = new Panel();
+            label14 = new Label();
+            txtPin = new TextBox();
+            btnXn = new Button();
+            label13 = new Label();
+            txtTaiKhoan = new TextBox();
+            label12 = new Label();
+            cbxCardType = new ComboBox();
+            comboBox1 = new ComboBox();
             pnThemTK = new Panel();
             btnXacNhan = new Button();
             label11 = new Label();
@@ -67,13 +81,15 @@
             label9 = new Label();
             label10 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            comboBox1 = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtNguoidung).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtTaikhoan).BeginInit();
             groupBox2.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtThe).BeginInit();
+            pnAdd_card.SuspendLayout();
             pnThemTK.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -81,7 +97,7 @@
             // btnDelete
             // 
             btnDelete.BackColor = Color.LightCoral;
-            btnDelete.Location = new Point(39, 475);
+            btnDelete.Location = new Point(18, 666);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(131, 46);
             btnDelete.TabIndex = 3;
@@ -126,7 +142,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(547, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(429, 779);
+            panel2.Size = new Size(429, 948);
             panel2.TabIndex = 1;
             // 
             // label7
@@ -296,6 +312,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(btnTimthe);
+            panel1.Controls.Add(txtTimthe);
+            panel1.Controls.Add(label15);
+            panel1.Controls.Add(groupBox3);
+            panel1.Controls.Add(pnAdd_card);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(pnThemTK);
             panel1.Controls.Add(Addcard);
@@ -308,21 +329,154 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(547, 779);
+            panel1.Size = new Size(547, 948);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // btnTimthe
+            // 
+            btnTimthe.Location = new Point(299, 469);
+            btnTimthe.Name = "btnTimthe";
+            btnTimthe.Size = new Size(118, 29);
+            btnTimthe.TabIndex = 41;
+            btnTimthe.Text = "Tìm";
+            btnTimthe.UseVisualStyleBackColor = true;
+            btnTimthe.Click += btnTimthe_Click;
+            // 
+            // txtTimthe
+            // 
+            txtTimthe.Location = new Point(122, 466);
+            txtTimthe.Name = "txtTimthe";
+            txtTimthe.Size = new Size(159, 27);
+            txtTimthe.TabIndex = 40;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(42, 473);
+            label15.Name = "label15";
+            label15.Size = new Size(64, 20);
+            label15.TabIndex = 39;
+            label15.Text = "Chọn TK";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(dtThe);
+            groupBox3.Location = new Point(39, 501);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(523, 141);
+            groupBox3.TabIndex = 38;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Thẻ";
+            // 
+            // dtThe
+            // 
+            dtThe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtThe.Dock = DockStyle.Fill;
+            dtThe.Location = new Point(3, 23);
+            dtThe.Name = "dtThe";
+            dtThe.RowHeadersWidth = 51;
+            dtThe.Size = new Size(517, 115);
+            dtThe.TabIndex = 0;
+            // 
+            // pnAdd_card
+            // 
+            pnAdd_card.BorderStyle = BorderStyle.FixedSingle;
+            pnAdd_card.Controls.Add(label14);
+            pnAdd_card.Controls.Add(txtPin);
+            pnAdd_card.Controls.Add(btnXn);
+            pnAdd_card.Controls.Add(label13);
+            pnAdd_card.Controls.Add(txtTaiKhoan);
+            pnAdd_card.Controls.Add(label12);
+            pnAdd_card.Controls.Add(cbxCardType);
+            pnAdd_card.Location = new Point(16, 726);
+            pnAdd_card.Name = "pnAdd_card";
+            pnAdd_card.Size = new Size(525, 198);
+            pnAdd_card.TabIndex = 37;
+            pnAdd_card.Visible = false;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(38, 123);
+            label14.Name = "label14";
+            label14.Size = new Size(95, 20);
+            label14.TabIndex = 6;
+            label14.Text = "Mã pin(4 số):";
+            // 
+            // txtPin
+            // 
+            txtPin.Location = new Point(138, 153);
+            txtPin.Name = "txtPin";
+            txtPin.Size = new Size(248, 27);
+            txtPin.TabIndex = 5;
+            // 
+            // btnXn
+            // 
+            btnXn.Location = new Point(395, 153);
+            btnXn.Name = "btnXn";
+            btnXn.Size = new Size(114, 32);
+            btnXn.TabIndex = 4;
+            btnXn.Text = "Xác nhận";
+            btnXn.UseVisualStyleBackColor = false;
+            btnXn.Click += btnXn_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(32, 66);
+            label13.Name = "label13";
+            label13.Size = new Size(111, 20);
+            label13.TabIndex = 3;
+            label13.Text = "Chọn tài khoản:";
+            // 
+            // txtTaiKhoan
+            // 
+            txtTaiKhoan.Location = new Point(138, 89);
+            txtTaiKhoan.Name = "txtTaiKhoan";
+            txtTaiKhoan.Size = new Size(248, 27);
+            txtTaiKhoan.TabIndex = 2;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(32, 12);
+            label12.Name = "label12";
+            label12.Size = new Size(100, 20);
+            label12.TabIndex = 1;
+            label12.Text = "Chọn loại thẻ:";
+            // 
+            // cbxCardType
+            // 
+            cbxCardType.FormattingEnabled = true;
+            cbxCardType.Items.AddRange(new object[] { "Tín dụng", "Ghi Nợ" });
+            cbxCardType.Location = new Point(138, 19);
+            cbxCardType.Name = "cbxCardType";
+            cbxCardType.Size = new Size(248, 28);
+            cbxCardType.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            comboBox1.Location = new Point(278, 33);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(124, 28);
+            comboBox1.TabIndex = 9;
+            // 
             // pnThemTK
             // 
+            pnThemTK.BorderStyle = BorderStyle.FixedSingle;
             pnThemTK.Controls.Add(btnXacNhan);
             pnThemTK.Controls.Add(label11);
             pnThemTK.Controls.Add(label8);
             pnThemTK.Controls.Add(txtBalance);
             pnThemTK.Controls.Add(txtName);
-            pnThemTK.Location = new Point(12, 547);
+            pnThemTK.Location = new Point(12, 738);
             pnThemTK.Name = "pnThemTK";
-            pnThemTK.Size = new Size(529, 152);
+            pnThemTK.Size = new Size(529, 182);
             pnThemTK.TabIndex = 8;
+            pnThemTK.Visible = false;
             // 
             // btnXacNhan
             // 
@@ -369,17 +523,18 @@
             // Addcard
             // 
             Addcard.BackColor = Color.Turquoise;
-            Addcard.Location = new Point(398, 475);
+            Addcard.Location = new Point(377, 666);
             Addcard.Name = "Addcard";
             Addcard.Size = new Size(146, 46);
             Addcard.TabIndex = 7;
             Addcard.Text = "Thêm thẻ";
             Addcard.UseVisualStyleBackColor = false;
+            Addcard.Click += Addcard_Click;
             // 
             // btnAddAccount
             // 
             btnAddAccount.BackColor = Color.LimeGreen;
-            btnAddAccount.Location = new Point(208, 475);
+            btnAddAccount.Location = new Point(187, 666);
             btnAddAccount.Name = "btnAddAccount";
             btnAddAccount.Size = new Size(147, 46);
             btnAddAccount.TabIndex = 6;
@@ -398,7 +553,7 @@
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(976, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(370, 779);
+            panel3.Size = new Size(370, 948);
             panel3.TabIndex = 34;
             // 
             // button1
@@ -443,20 +598,11 @@
             label10.TabIndex = 33;
             label10.Text = "Tên Tài khoản: :";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(278, 33);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(124, 28);
-            comboBox1.TabIndex = 9;
-            // 
             // NguoiDung
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 779);
+            ClientSize = new Size(1300, 948);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -472,6 +618,10 @@
             groupBox2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtThe).EndInit();
+            pnAdd_card.ResumeLayout(false);
+            pnAdd_card.PerformLayout();
             pnThemTK.ResumeLayout(false);
             pnThemTK.PerformLayout();
             panel3.ResumeLayout(false);
@@ -520,5 +670,18 @@
         private Label label8;
         private TextBox txtBalance;
         private ComboBox comboBox1;
+        private Panel pnAdd_card;
+        private Label label13;
+        private TextBox txtTaiKhoan;
+        private Label label12;
+        private ComboBox cbxCardType;
+        private Button btnXn;
+        private Label label14;
+        private TextBox txtPin;
+        private GroupBox groupBox3;
+        private DataGridView dtThe;
+        private Button btnTimthe;
+        private TextBox txtTimthe;
+        private Label label15;
     }
 }

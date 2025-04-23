@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using Microsoft.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using QLGIAODICH.Helper;
+using QLGIAODICH.Models;
 using QLGIAODICH.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace QLGIAODICH
@@ -21,10 +22,13 @@ namespace QLGIAODICH
         int selectedUserId;
         int selectestk;
         bool swicth = false;
+        bool swicth_crCard = false;
         RandSTK stk;
         RandPassword password;
+        RandSTK randcard;
         public NguoiDung()
         {
+            randcard = new RandSTK(SQLConnectionstring);
             password = new RandPassword();
             stk = new RandSTK(SQLConnectionstring);
             timkiem = new Search(SQLConnectionstring);
@@ -58,6 +62,7 @@ namespace QLGIAODICH
 
             dtGridViewconfig.DTconfig(dtNguoidung);
             dtGridViewconfig.DTconfig(dtTaikhoan);
+            dtGridViewconfig.DTconfig(dtThe);
         }
         private void NguoiDung_SizeChanged(object sender, EventArgs e)
         {
@@ -193,6 +198,8 @@ namespace QLGIAODICH
                 txbTentaikhoan.Text = row.Cells["TenTaiKhoan"].Value.ToString();
                 tbMK.Text = row.Cells["MatKhau"].Value.ToString();
                 selectestk = (int)row.Cells["IDTaiKhoan"].Value;
+                txtTaiKhoan.Text = row.Cells["TenTaiKhoan"].Value.ToString();
+                txtTimthe.Text = row.Cells["SoTaiKhoan"].Value.ToString();
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -211,6 +218,7 @@ namespace QLGIAODICH
             if (swicth)
             {
                 pnThemTK.Visible = true;
+                pnAdd_card.Visible = false;
             }
             else
             {
@@ -220,10 +228,10 @@ namespace QLGIAODICH
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Xác nhận thêm tài khoản","Đồng ý",
+            DialogResult result = MessageBox.Show("Xác nhận thêm tài khoản", "Đồng ý",
                 MessageBoxButtons.YesNo);
-            string query = "INSERT INTO tblTaiKhoan(IDNguoiDung,TenTaiKhoan,MatKhau,SoTaiKhoan,SoDu) "+"VALUES(@IDNguoiDung,@TenTaiKhoan,@MatKhau,@SoTaiKhoan,@SoDu)";
-            foreach(Control control in pnThemTK.Controls)
+            string query = "INSERT INTO tblTaiKhoan(IDNguoiDung,TenTaiKhoan,MatKhau,SoTaiKhoan,SoDu) " + "VALUES(@IDNguoiDung,@TenTaiKhoan,@MatKhau,@SoTaiKhoan,@SoDu)";
+            foreach (Control control in pnThemTK.Controls)
             {
                 if (control is TextBox txt)
                 {
@@ -243,28 +251,118 @@ namespace QLGIAODICH
                         using (SqlConnection conn = new SqlConnection(SQLConnectionstring))
                         {
                             conn.Open();
+                            string MK = password.GenerateRandomPassword();
+                            string STK = stk.SoTaiKhoan("tblTaiKhoan", "SoTaiKhoan");
+                            Session.MatKhau = MK;
+                            Session.SoTaiKhoan = STK;
                             using (SqlCommand cmd = new SqlCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("IDNguoiDung", selectedUserId);
                                 cmd.Parameters.AddWithValue("@TenTaiKhoan", txtName.Text);
-                                cmd.Parameters.AddWithValue("@MatKhau", password.GenerateRandomPassword().ToString());
-                                cmd.Parameters.AddWithValue("@SoTaiKhoan", stk.SoTaiKhoan("tblTaiKhoan", "SoTaiKhoan").ToString());
+                                cmd.Parameters.AddWithValue("@MatKhau", MK);
+                                cmd.Parameters.AddWithValue("@SoTaiKhoan", STK);
                                 cmd.Parameters.AddWithValue("@SoDu", txtBalance.Text);
                                 cmd.ExecuteNonQuery();
                             }
+                            MessageBox.Show($"Số Tài Khoản: {Session.SoTaiKhoan}\n Mật Khẩu:{Session.MatKhau}");
+                            Session.MatKhau = "";
+                            Session.SoTaiKhoan = "";
                         }
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("Chon Nguoi Dung Di Bro");
                     }
+
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                } 
+                }
             }
+        }
+
+        private void Addcard_Click(object sender, EventArgs e)
+        {
+            swicth_crCard = !swicth_crCard;
+            if (swicth_crCard)
+            {
+                pnAdd_card.Visible = true;
+                pnThemTK.Visible = false;
+            }
+            else
+            {
+                pnAdd_card.Visible = false;
+            }
+        }
+
+        private void btnXn_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO tblThe VALUES (@IDTaiKhoan,@SoThe,@NgayHetHan,@MaLoai,@Mapin)";
+            DialogResult result = MessageBox.Show("Xác nhận thao tác?",
+                "Đồng ý",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            foreach (Control c in pnAdd_card.Controls)
+            {
+                if (c is TextBox && string.IsNullOrEmpty(c.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                    return;
+                }
+            }
+            if (cbxCardType.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn loại thẻ");
+                return;
+            }
+            int Loai;
+            if (cbxCardType.Text.ToString() == "Tín dụng")
+            {
+                Loai = 11;
+            }
+            else
+            {
+                Loai = 12;
+            }
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(SQLConnectionstring))
+                    {
+                        con.Open();
+                        string sothe = randcard.SoThe("tblThe", "SoThe");
+                        DateTime dt = DateTime.Now.AddYears(5);
+
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@IDTaiKhoan", selectestk);
+                            cmd.Parameters.AddWithValue("@SoThe", sothe);
+                            cmd.Parameters.AddWithValue("@NgayHetHan", dt);
+                            cmd.Parameters.AddWithValue("@MaLoai", Loai);
+                            cmd.Parameters.AddWithValue("@Mapin", txtPin.Text);
+                            cmd.ExecuteNonQuery();
+                        }
+                        MessageBox.Show($"The cua ban :{sothe}\n Mapin {txtPin.Text}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnTimthe_Click(object sender, EventArgs e)
+        {
+            string query2 = @"
+            SELECT *
+            FROM tblThe tk
+            WHERE tk.IDTaiKhoan = @value
+            ";
+            dtThe.DataSource = timkiem.Timkiem(query2, selectestk.ToString());
         }
     }
 }

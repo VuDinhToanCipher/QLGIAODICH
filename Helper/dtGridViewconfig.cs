@@ -29,7 +29,9 @@ namespace QLGIAODICH.Helper
             dt.DefaultCellStyle.SelectionForeColor = Color.Black;
             dt.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             //can chinh
-            dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             dt.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dt.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }

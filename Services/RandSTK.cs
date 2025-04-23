@@ -12,26 +12,26 @@ namespace QLGIAODICH.Services
         string connectionstring;
         Random r = new Random();
         string STK;
+        string CardNum;
         int test;
         public RandSTK(string connectionstring)
         {
             this.connectionstring = connectionstring;
         }
-        public string SoTaiKhoan(string Table,string Colunm)
+        public string SoTaiKhoan(string Table, string Colunm)
         {
-           
             do
             {
                 STK = "";
-                for(int i = 0; i < 12; i++)
+                for (int i = 0; i < 12; i++)
                 {
-                  STK += r.Next(1,10).ToString();
+                    STK += r.Next(1, 10).ToString();
                 }
                 string query = $"SELECT COUNT(*) FROM {Table} WHERE {Colunm} = @STK";
-                using(SqlConnection con = new SqlConnection(connectionstring))
+                using (SqlConnection con = new SqlConnection(connectionstring))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand(query,con);
+                    SqlCommand cmd = new SqlCommand(query, con);
                     try
                     {
                         test = (int)cmd.ExecuteScalar();
@@ -40,8 +40,8 @@ namespace QLGIAODICH.Services
                     {
 
                     }
-                   
-                    if ( test == 0)
+
+                    if (test == 0)
                     {
                         break;
                     }
@@ -50,6 +50,39 @@ namespace QLGIAODICH.Services
 
             } while (true);
             return STK;
+
+        }
+        public string SoThe(string Table, string Colunm)
+        {
+            do
+            {
+                CardNum = "";
+                for (int i = 0; i < 15; i++)
+                {
+                    CardNum += r.Next(1, 10).ToString();
+                }
+                string query = $"SELECT COUNT(*) FROM {Table} WHERE {Colunm} = @STK";
+                using (SqlConnection con = new SqlConnection(connectionstring))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    try
+                    {
+                        test = (int)cmd.ExecuteScalar();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                    if (test == 0)
+                    {
+                        break;
+                    }
+                }
+
+            } while (true);
+            return CardNum;
 
         }
     }

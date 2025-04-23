@@ -46,6 +46,8 @@
             label2 = new Label();
             label1 = new Label();
             panel3 = new Panel();
+            label9 = new Label();
+            txttkdc = new TextBox();
             btnSMS = new Button();
             label8 = new Label();
             btnXNID = new Button();
@@ -61,12 +63,12 @@
             textBox2 = new TextBox();
             button2 = new Button();
             groupBox1 = new GroupBox();
+            cbTimTk = new ComboBox();
             txbTaiKhoan = new TextBox();
             btnSearch = new Button();
             dtTK = new DataGridView();
             txtSTK = new TextBox();
             btnTim = new Button();
-            comboBox2 = new ComboBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -97,12 +99,12 @@
             panel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(674, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(523, 570);
+            panel1.Size = new Size(523, 733);
             panel1.TabIndex = 9;
             // 
             // button1
             // 
-            button1.Location = new Point(426, 522);
+            button1.Location = new Point(426, 673);
             button1.Name = "button1";
             button1.Size = new Size(94, 45);
             button1.TabIndex = 30;
@@ -262,6 +264,8 @@
             // panel3
             // 
             panel3.BackColor = Color.LightSteelBlue;
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(txttkdc);
             panel3.Controls.Add(btnSMS);
             panel3.Controls.Add(label8);
             panel3.Controls.Add(btnXNID);
@@ -271,16 +275,32 @@
             panel3.Controls.Add(textBox3);
             panel3.Controls.Add(groupBox2);
             panel3.Controls.Add(groupBox1);
-            panel3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.Location = new Point(14, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(634, 570);
+            panel3.Size = new Size(634, 733);
             panel3.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(149, 201);
+            label9.Name = "label9";
+            label9.Size = new Size(168, 23);
+            label9.TabIndex = 35;
+            label9.Text = "Tài khoản được chọn";
+            // 
+            // txttkdc
+            // 
+            txttkdc.Location = new Point(347, 201);
+            txttkdc.Name = "txttkdc";
+            txttkdc.Size = new Size(261, 30);
+            txttkdc.TabIndex = 34;
             // 
             // btnSMS
             // 
             btnSMS.Font = new Font("Segoe UI", 10.8F);
-            btnSMS.Location = new Point(34, 529);
+            btnSMS.Location = new Point(34, 597);
             btnSMS.Name = "btnSMS";
             btnSMS.Size = new Size(168, 29);
             btnSMS.TabIndex = 33;
@@ -290,16 +310,16 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(322, 424);
+            label8.Location = new Point(322, 492);
             label8.Name = "label8";
-            label8.Size = new Size(77, 28);
+            label8.Size = new Size(67, 23);
             label8.TabIndex = 17;
             label8.Text = "Số tiền:";
             // 
             // btnXNID
             // 
             btnXNID.Font = new Font("Segoe UI", 10.8F);
-            btnXNID.Location = new Point(34, 447);
+            btnXNID.Location = new Point(34, 515);
             btnXNID.Name = "btnXNID";
             btnXNID.Size = new Size(168, 36);
             btnXNID.TabIndex = 32;
@@ -308,23 +328,23 @@
             // 
             // txbSoTien
             // 
-            txbSoTien.Location = new Point(405, 418);
+            txbSoTien.Location = new Point(405, 486);
             txbSoTien.Name = "txbSoTien";
-            txbSoTien.Size = new Size(209, 34);
+            txbSoTien.Size = new Size(209, 30);
             txbSoTien.TabIndex = 16;
             txbSoTien.TextChanged += txbSoTien_TextChanged_1;
             txbSoTien.KeyPress += txbSoTien_KeyPress_1;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(19, 489);
+            textBox1.Location = new Point(19, 557);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(204, 34);
+            textBox1.Size = new Size(204, 30);
             textBox1.TabIndex = 31;
             // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(405, 476);
+            btnXacNhan.Location = new Point(405, 544);
             btnXacNhan.Name = "btnXacNhan";
             btnXacNhan.Size = new Size(209, 40);
             btnXacNhan.TabIndex = 15;
@@ -334,9 +354,9 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(19, 407);
+            textBox3.Location = new Point(19, 475);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(204, 34);
+            textBox3.Size = new Size(204, 30);
             textBox3.TabIndex = 30;
             // 
             // groupBox2
@@ -347,7 +367,7 @@
             groupBox2.Controls.Add(dtTKN);
             groupBox2.Controls.Add(textBox2);
             groupBox2.Controls.Add(button2);
-            groupBox2.Location = new Point(3, 207);
+            groupBox2.Location = new Point(3, 275);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(611, 180);
             groupBox2.TabIndex = 14;
@@ -357,9 +377,10 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "VietinBank", "MbBank", "MbBankCrack" });
             comboBox1.Location = new Point(283, 29);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 36);
+            comboBox1.Size = new Size(160, 31);
             comboBox1.TabIndex = 5;
             comboBox1.Text = "Ngân Hàng";
             // 
@@ -367,7 +388,7 @@
             // 
             txbTaiKhoanNhan.Location = new Point(16, 31);
             txbTaiKhoanNhan.Name = "txbTaiKhoanNhan";
-            txbTaiKhoanNhan.Size = new Size(261, 34);
+            txbTaiKhoanNhan.Size = new Size(261, 30);
             txbTaiKhoanNhan.TabIndex = 4;
             // 
             // btnSearchTKN
@@ -394,7 +415,7 @@
             // 
             textBox2.Location = new Point(-179, -44);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(281, 34);
+            textBox2.Size = new Size(281, 30);
             textBox2.TabIndex = 0;
             // 
             // button2
@@ -408,7 +429,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox2);
+            groupBox1.Controls.Add(cbTimTk);
             groupBox1.Controls.Add(txbTaiKhoan);
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(dtTK);
@@ -421,11 +442,20 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Tài Khoản Gửi";
             // 
+            // cbTimTk
+            // 
+            cbTimTk.FormattingEnabled = true;
+            cbTimTk.Items.AddRange(new object[] { "Căn cước", "Số Tài Khoản" });
+            cbTimTk.Location = new Point(199, 30);
+            cbTimTk.Name = "cbTimTk";
+            cbTimTk.Size = new Size(151, 31);
+            cbTimTk.TabIndex = 5;
+            // 
             // txbTaiKhoan
             // 
             txbTaiKhoan.Location = new Point(19, 33);
             txbTaiKhoan.Name = "txbTaiKhoan";
-            txbTaiKhoan.Size = new Size(174, 34);
+            txbTaiKhoan.Size = new Size(174, 30);
             txbTaiKhoan.TabIndex = 4;
             // 
             // btnSearch
@@ -444,7 +474,7 @@
             dtTK.Location = new Point(19, 79);
             dtTK.Name = "dtTK";
             dtTK.RowHeadersWidth = 51;
-            dtTK.Size = new Size(589, 97);
+            dtTK.Size = new Size(589, 116);
             dtTK.TabIndex = 2;
             dtTK.CellContentClick += dtTK_CellContentClick_1;
             // 
@@ -452,7 +482,7 @@
             // 
             txtSTK.Location = new Point(-179, -44);
             txtSTK.Name = "txtSTK";
-            txtSTK.Size = new Size(281, 34);
+            txtSTK.Size = new Size(281, 30);
             txtSTK.TabIndex = 0;
             // 
             // btnTim
@@ -464,20 +494,11 @@
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Căn cước", "Số Tài Khoản" });
-            comboBox2.Location = new Point(199, 30);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(151, 36);
-            comboBox2.TabIndex = 5;
-            // 
             // ChuyenKhoan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1209, 582);
+            ClientSize = new Size(1209, 745);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Name = "ChuyenKhoan";
@@ -535,6 +556,8 @@
         private TextBox textBox1;
         private TextBox textBox3;
         private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private ComboBox cbTimTk;
+        private Label label9;
+        private TextBox txttkdc;
     }
 }
