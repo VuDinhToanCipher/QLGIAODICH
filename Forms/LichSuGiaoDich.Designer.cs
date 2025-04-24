@@ -33,10 +33,8 @@
             dtLichsu = new DataGridView();
             pnThongtin = new Panel();
             groupBox2 = new GroupBox();
-            cbReport = new ComboBox();
             lbSTKN = new Label();
             label9 = new Label();
-            btnExport = new Button();
             lbTime = new Label();
             lbSotien = new Label();
             lbType = new Label();
@@ -47,16 +45,18 @@
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
+            cbReport = new ComboBox();
+            btnExport = new Button();
             pnThanhcongcu = new Panel();
-            comboBox1 = new ComboBox();
+            cbLoaiTK = new ComboBox();
             btnReload = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            dt2 = new DateTimePicker();
+            dt1 = new DateTimePicker();
             btnSearch = new Button();
-            textBox1 = new TextBox();
+            txtTK = new TextBox();
             pnData.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtLichsu).BeginInit();
@@ -130,24 +130,14 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "THÔNG TIN CHI  TIẾT";
             // 
-            // cbReport
-            // 
-            cbReport.FormattingEnabled = true;
-            cbReport.Items.AddRange(new object[] { "Lịch sử giao dịch", "Thông tin CT" });
-            cbReport.Location = new Point(912, 75);
-            cbReport.Name = "cbReport";
-            cbReport.Size = new Size(199, 28);
-            cbReport.TabIndex = 13;
-            // 
             // lbSTKN
             // 
             lbSTKN.AutoSize = true;
             lbSTKN.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbSTKN.Location = new Point(253, 185);
             lbSTKN.Name = "lbSTKN";
-            lbSTKN.Size = new Size(76, 28);
+            lbSTKN.Size = new Size(0, 28);
             lbSTKN.TabIndex = 12;
-            lbSTKN.Text = "label10";
             // 
             // label9
             // 
@@ -159,25 +149,14 @@
             label9.TabIndex = 11;
             label9.Text = "Số tài khoản nhận:";
             // 
-            // btnExport
-            // 
-            btnExport.Location = new Point(937, 109);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(142, 46);
-            btnExport.TabIndex = 5;
-            btnExport.Text = "Xuất báo cáo";
-            btnExport.UseVisualStyleBackColor = true;
-            btnExport.Click += button1_Click;
-            // 
             // lbTime
             // 
             lbTime.AutoSize = true;
             lbTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbTime.Location = new Point(253, 371);
             lbTime.Name = "lbTime";
-            lbTime.Size = new Size(76, 28);
+            lbTime.Size = new Size(0, 28);
             lbTime.TabIndex = 10;
-            lbTime.Text = "label13";
             // 
             // lbSotien
             // 
@@ -185,9 +164,8 @@
             lbSotien.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbSotien.Location = new Point(253, 304);
             lbSotien.Name = "lbSotien";
-            lbSotien.Size = new Size(76, 28);
+            lbSotien.Size = new Size(0, 28);
             lbSotien.TabIndex = 9;
-            lbSotien.Text = "label12";
             // 
             // lbType
             // 
@@ -195,9 +173,8 @@
             lbType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbType.Location = new Point(253, 244);
             lbType.Name = "lbType";
-            lbType.Size = new Size(76, 28);
+            lbType.Size = new Size(0, 28);
             lbType.TabIndex = 8;
-            lbType.Text = "label11";
             // 
             // lbSTK
             // 
@@ -205,9 +182,8 @@
             lbSTK.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbSTK.Location = new Point(253, 121);
             lbSTK.Name = "lbSTK";
-            lbSTK.Size = new Size(76, 28);
+            lbSTK.Size = new Size(0, 28);
             lbSTK.TabIndex = 7;
-            lbSTK.Text = "label10";
             // 
             // lbName
             // 
@@ -215,9 +191,8 @@
             lbName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbName.Location = new Point(253, 59);
             lbName.Name = "lbName";
-            lbName.Size = new Size(65, 28);
+            lbName.Size = new Size(0, 28);
             lbName.TabIndex = 6;
-            lbName.Text = "label9";
             // 
             // label8
             // 
@@ -269,33 +244,53 @@
             label4.TabIndex = 0;
             label4.Text = "Tên chủ khoản:";
             // 
+            // cbReport
+            // 
+            cbReport.FormattingEnabled = true;
+            cbReport.Items.AddRange(new object[] { "Lịch sử giao dịch", "Thông tin CT" });
+            cbReport.Location = new Point(912, 75);
+            cbReport.Name = "cbReport";
+            cbReport.Size = new Size(199, 28);
+            cbReport.TabIndex = 13;
+            // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(937, 109);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(142, 46);
+            btnExport.TabIndex = 5;
+            btnExport.Text = "Xuất báo cáo";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += button1_Click;
+            // 
             // pnThanhcongcu
             // 
             pnThanhcongcu.BackColor = SystemColors.ControlLight;
             pnThanhcongcu.Controls.Add(cbReport);
-            pnThanhcongcu.Controls.Add(comboBox1);
+            pnThanhcongcu.Controls.Add(cbLoaiTK);
             pnThanhcongcu.Controls.Add(btnReload);
             pnThanhcongcu.Controls.Add(label3);
             pnThanhcongcu.Controls.Add(btnExport);
             pnThanhcongcu.Controls.Add(label2);
             pnThanhcongcu.Controls.Add(label1);
-            pnThanhcongcu.Controls.Add(dateTimePicker2);
-            pnThanhcongcu.Controls.Add(dateTimePicker1);
+            pnThanhcongcu.Controls.Add(dt2);
+            pnThanhcongcu.Controls.Add(dt1);
             pnThanhcongcu.Controls.Add(btnSearch);
-            pnThanhcongcu.Controls.Add(textBox1);
+            pnThanhcongcu.Controls.Add(txtTK);
             pnThanhcongcu.Location = new Point(12, 12);
             pnThanhcongcu.Name = "pnThanhcongcu";
             pnThanhcongcu.Size = new Size(1139, 167);
             pnThanhcongcu.TabIndex = 2;
             // 
-            // comboBox1
+            // cbLoaiTK
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(444, 9);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(143, 28);
-            comboBox1.TabIndex = 8;
+            cbLoaiTK.FormattingEnabled = true;
+            cbLoaiTK.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            cbLoaiTK.Location = new Point(444, 9);
+            cbLoaiTK.Name = "cbLoaiTK";
+            cbLoaiTK.Size = new Size(143, 28);
+            cbLoaiTK.TabIndex = 8;
+            cbLoaiTK.Text = "Số Tài Khoản";
             // 
             // btnReload
             // 
@@ -337,20 +332,20 @@
             label1.TabIndex = 4;
             label1.Text = "Ngày bắt đầu:";
             // 
-            // dateTimePicker2
+            // dt2
             // 
-            dateTimePicker2.Location = new Point(172, 98);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(266, 27);
-            dateTimePicker2.TabIndex = 3;
+            dt2.Location = new Point(172, 98);
+            dt2.Name = "dt2";
+            dt2.Size = new Size(266, 27);
+            dt2.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // dt1
             // 
-            dateTimePicker1.Location = new Point(172, 51);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(266, 27);
-            dateTimePicker1.TabIndex = 2;
-            dateTimePicker1.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+            dt1.Location = new Point(172, 51);
+            dt1.Name = "dt1";
+            dt1.Size = new Size(266, 27);
+            dt1.TabIndex = 2;
+            dt1.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // btnSearch
             // 
@@ -362,15 +357,16 @@
             btnSearch.Text = "Tìm kiếm";
             btnSearch.TextAlign = ContentAlignment.BottomCenter;
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // textBox1
+            // txtTK
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(172, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(266, 42);
-            textBox1.TabIndex = 0;
+            txtTK.BorderStyle = BorderStyle.FixedSingle;
+            txtTK.Location = new Point(172, 3);
+            txtTK.Multiline = true;
+            txtTK.Name = "txtTK";
+            txtTK.Size = new Size(266, 42);
+            txtTK.TabIndex = 0;
             // 
             // LichSuGiaoDich
             // 
@@ -404,11 +400,11 @@
         private DataGridView dtLichsu;
         private GroupBox groupBox2;
         private Button btnSearch;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker1;
+        private TextBox txtTK;
+        private DateTimePicker dt1;
         private Label label2;
         private Label label1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dt2;
         private Label label3;
         private Button btnReload;
         private Label label8;
@@ -425,6 +421,6 @@
         private Label lbSTKN;
         private Label label9;
         private ComboBox cbReport;
-        private ComboBox comboBox1;
+        private ComboBox cbLoaiTK;
     }
 }

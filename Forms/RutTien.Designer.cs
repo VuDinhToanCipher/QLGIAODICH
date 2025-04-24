@@ -30,14 +30,15 @@
         {
             pn1 = new Panel();
             groupBox1 = new GroupBox();
+            label2 = new Label();
+            txtTk = new TextBox();
+            cbTimkiem = new ComboBox();
             txtTaiKhoan = new TextBox();
             btnSearch = new Button();
             dtTK = new DataGridView();
             groupBox2 = new GroupBox();
             btnSMS = new Button();
-            btnXNID = new Button();
             textBox2 = new TextBox();
-            textBox1 = new TextBox();
             txtSoTien = new TextBox();
             btnGui = new Button();
             pn2 = new Panel();
@@ -53,7 +54,7 @@
             label3 = new Label();
             label = new Label();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            label6 = new Label();
             pn1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtTK).BeginInit();
@@ -73,7 +74,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(txtTk);
+            groupBox1.Controls.Add(cbTimkiem);
             groupBox1.Controls.Add(txtTaiKhoan);
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(dtTK);
@@ -84,6 +87,33 @@
             groupBox1.TabIndex = 24;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tài Khoản";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(184, 230);
+            label2.Name = "label2";
+            label2.Size = new Size(192, 28);
+            label2.TabIndex = 9;
+            label2.Text = "Tài khoản được chọn";
+            // 
+            // txtTk
+            // 
+            txtTk.Enabled = false;
+            txtTk.Location = new Point(382, 224);
+            txtTk.Name = "txtTk";
+            txtTk.Size = new Size(226, 34);
+            txtTk.TabIndex = 8;
+            // 
+            // cbTimkiem
+            // 
+            cbTimkiem.FormattingEnabled = true;
+            cbTimkiem.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            cbTimkiem.Location = new Point(308, 45);
+            cbTimkiem.Name = "cbTimkiem";
+            cbTimkiem.Size = new Size(153, 36);
+            cbTimkiem.TabIndex = 7;
+            cbTimkiem.Text = "Số Tài Khoản";
             // 
             // txtTaiKhoan
             // 
@@ -113,16 +143,15 @@
             dtTK.Location = new Point(6, 107);
             dtTK.Name = "dtTK";
             dtTK.RowHeadersWidth = 51;
-            dtTK.Size = new Size(602, 159);
+            dtTK.Size = new Size(602, 99);
             dtTK.TabIndex = 2;
             dtTK.CellContentClick += dtTK_CellContentClick;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(btnSMS);
-            groupBox2.Controls.Add(btnXNID);
             groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
             groupBox2.Controls.Add(txtSoTien);
             groupBox2.Controls.Add(btnGui);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -131,47 +160,30 @@
             groupBox2.Size = new Size(660, 228);
             groupBox2.TabIndex = 23;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Số tiền";
+            groupBox2.Text = "Xác nhận";
             // 
             // btnSMS
             // 
             btnSMS.Font = new Font("Segoe UI", 10.8F);
-            btnSMS.Location = new Point(420, 86);
+            btnSMS.Location = new Point(420, 68);
             btnSMS.Name = "btnSMS";
-            btnSMS.Size = new Size(168, 29);
+            btnSMS.Size = new Size(168, 34);
             btnSMS.TabIndex = 13;
             btnSMS.Text = "Mã xác nhận";
             btnSMS.UseVisualStyleBackColor = true;
             // 
-            // btnXNID
-            // 
-            btnXNID.Font = new Font("Segoe UI", 10.8F);
-            btnXNID.Location = new Point(420, 37);
-            btnXNID.Name = "btnXNID";
-            btnXNID.Size = new Size(168, 29);
-            btnXNID.TabIndex = 12;
-            btnXNID.Text = "Xác nhận căn cước";
-            btnXNID.UseVisualStyleBackColor = true;
-            // 
             // textBox2
             // 
-            textBox2.Location = new Point(25, 88);
+            textBox2.Location = new Point(25, 67);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(360, 34);
             textBox2.TabIndex = 11;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(25, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(360, 34);
-            textBox1.TabIndex = 10;
-            // 
             // txtSoTien
             // 
-            txtSoTien.Location = new Point(25, 137);
+            txtSoTien.Location = new Point(130, 137);
             txtSoTien.Name = "txtSoTien";
-            txtSoTien.Size = new Size(360, 34);
+            txtSoTien.Size = new Size(255, 34);
             txtSoTien.TabIndex = 4;
             txtSoTien.TextChanged += txtSoTien_TextChanged;
             // 
@@ -321,14 +333,14 @@
             label1.TabIndex = 34;
             label1.Text = "BIÊN LAI";
             // 
-            // comboBox1
+            // label6
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(308, 45);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(153, 36);
-            comboBox1.TabIndex = 7;
+            label6.AutoSize = true;
+            label6.Location = new Point(25, 140);
+            label6.Name = "label6";
+            label6.Size = new Size(73, 28);
+            label6.TabIndex = 14;
+            label6.Text = "Số tiền";
             // 
             // RutTien
             // 
@@ -361,9 +373,7 @@
         private TextBox txtSoTien;
         private Button btnGui;
         private Button btnSMS;
-        private Button btnXNID;
         private TextBox textBox2;
-        private TextBox textBox1;
         private Panel pn2;
         private Button btnExport;
         private Label lbTime;
@@ -377,6 +387,9 @@
         private Label label3;
         private Label label;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox cbTimkiem;
+        private Label label2;
+        private TextBox txtTk;
+        private Label label6;
     }
 }

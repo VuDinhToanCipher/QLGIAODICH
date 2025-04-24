@@ -117,9 +117,8 @@
             lbSTKN.Font = new Font("Segoe UI", 12F);
             lbSTKN.Location = new Point(243, 260);
             lbSTKN.Name = "lbSTKN";
-            lbSTKN.Size = new Size(76, 28);
+            lbSTKN.Size = new Size(0, 28);
             lbSTKN.TabIndex = 29;
-            lbSTKN.Text = "label15";
             // 
             // lbSTKG
             // 
@@ -127,9 +126,8 @@
             lbSTKG.Font = new Font("Segoe UI", 12F);
             lbSTKG.Location = new Point(243, 154);
             lbSTKG.Name = "lbSTKG";
-            lbSTKG.Size = new Size(76, 28);
+            lbSTKG.Size = new Size(0, 28);
             lbSTKG.TabIndex = 28;
-            lbSTKG.Text = "label14";
             // 
             // lbNguoinhan
             // 
@@ -137,9 +135,8 @@
             lbNguoinhan.Font = new Font("Segoe UI", 12F);
             lbNguoinhan.Location = new Point(243, 207);
             lbNguoinhan.Name = "lbNguoinhan";
-            lbNguoinhan.Size = new Size(76, 28);
+            lbNguoinhan.Size = new Size(0, 28);
             lbNguoinhan.TabIndex = 27;
-            lbNguoinhan.Text = "label13";
             // 
             // lbNguoigui
             // 
@@ -147,9 +144,8 @@
             lbNguoigui.Font = new Font("Segoe UI", 12F);
             lbNguoigui.Location = new Point(243, 92);
             lbNguoigui.Name = "lbNguoigui";
-            lbNguoigui.Size = new Size(76, 28);
+            lbNguoigui.Size = new Size(0, 28);
             lbNguoigui.TabIndex = 26;
-            lbNguoigui.Text = "label12";
             // 
             // lbNV
             // 
@@ -157,9 +153,8 @@
             lbNV.Font = new Font("Segoe UI", 12F);
             lbNV.Location = new Point(243, 437);
             lbNV.Name = "lbNV";
-            lbNV.Size = new Size(76, 28);
+            lbNV.Size = new Size(0, 28);
             lbNV.TabIndex = 25;
-            lbNV.Text = "label11";
             // 
             // label10
             // 
@@ -177,9 +172,8 @@
             lbNgay.Font = new Font("Segoe UI", 12F);
             lbNgay.Location = new Point(243, 369);
             lbNgay.Name = "lbNgay";
-            lbNgay.Size = new Size(65, 28);
+            lbNgay.Size = new Size(0, 28);
             lbNgay.TabIndex = 23;
-            lbNgay.Text = "label9";
             // 
             // lbSoTien
             // 
@@ -187,9 +181,8 @@
             lbSoTien.Font = new Font("Segoe UI", 12F);
             lbSoTien.Location = new Point(243, 314);
             lbSoTien.Name = "lbSoTien";
-            lbSoTien.Size = new Size(65, 28);
+            lbSoTien.Size = new Size(0, 28);
             lbSoTien.TabIndex = 22;
-            lbSoTien.Text = "label8";
             // 
             // label7
             // 
@@ -450,6 +443,7 @@
             cbTimTk.Name = "cbTimTk";
             cbTimTk.Size = new Size(151, 31);
             cbTimTk.TabIndex = 5;
+            cbTimTk.Text = "Số Tài Khoản";
             // 
             // txbTaiKhoan
             // 

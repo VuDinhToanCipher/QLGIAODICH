@@ -49,20 +49,19 @@
             pn1 = new Panel();
             groupBox2 = new GroupBox();
             btnSMS = new Button();
-            btnXNID = new Button();
             textBox2 = new TextBox();
-            textBox1 = new TextBox();
             txtSoTien = new TextBox();
             btnGui = new Button();
             groupBox1 = new GroupBox();
+            label2 = new Label();
+            txtSelect = new TextBox();
             cbTimTk = new ComboBox();
             dtTK = new DataGridView();
             txtTaiKhoan = new TextBox();
             btnSearch = new Button();
             txtSTK = new TextBox();
             btnTim = new Button();
-            txtSelect = new TextBox();
-            label2 = new Label();
+            label6 = new Label();
             panel1.SuspendLayout();
             pnGiaoDich.SuspendLayout();
             pn2.SuspendLayout();
@@ -284,10 +283,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(btnSMS);
-            groupBox2.Controls.Add(btnXNID);
             groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
             groupBox2.Controls.Add(txtSoTien);
             groupBox2.Controls.Add(btnGui);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -296,47 +294,30 @@
             groupBox2.Size = new Size(670, 200);
             groupBox2.TabIndex = 11;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Số tiền";
+            groupBox2.Text = "Xác nhận";
             // 
             // btnSMS
             // 
             btnSMS.Font = new Font("Segoe UI", 10.8F);
-            btnSMS.Location = new Point(414, 85);
+            btnSMS.Location = new Point(409, 65);
             btnSMS.Name = "btnSMS";
-            btnSMS.Size = new Size(173, 29);
+            btnSMS.Size = new Size(173, 34);
             btnSMS.TabIndex = 9;
             btnSMS.Text = "Mã xác nhận";
             btnSMS.UseVisualStyleBackColor = true;
             // 
-            // btnXNID
-            // 
-            btnXNID.Font = new Font("Segoe UI", 10.8F);
-            btnXNID.Location = new Point(414, 36);
-            btnXNID.Name = "btnXNID";
-            btnXNID.Size = new Size(173, 29);
-            btnXNID.TabIndex = 8;
-            btnXNID.Text = "Xác nhận căn cước";
-            btnXNID.UseVisualStyleBackColor = true;
-            // 
             // textBox2
             // 
-            textBox2.Location = new Point(19, 87);
+            textBox2.Location = new Point(19, 65);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(360, 34);
             textBox2.TabIndex = 7;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(19, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(360, 34);
-            textBox1.TabIndex = 6;
-            // 
             // txtSoTien
             // 
-            txtSoTien.Location = new Point(19, 135);
+            txtSoTien.Location = new Point(109, 135);
             txtSoTien.Name = "txtSoTien";
-            txtSoTien.Size = new Size(360, 34);
+            txtSoTien.Size = new Size(270, 34);
             txtSoTien.TabIndex = 4;
             txtSoTien.TextChanged += txtSoTien_TextChanged_1;
             txtSoTien.KeyPress += txtSoTien_KeyPress_1;
@@ -370,6 +351,22 @@
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tài Khoản";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(385, 271);
+            label2.Name = "label2";
+            label2.Size = new Size(228, 28);
+            label2.TabIndex = 8;
+            label2.Text = "Tài khoản chọn giao dịch";
+            // 
+            // txtSelect
+            // 
+            txtSelect.Location = new Point(17, 268);
+            txtSelect.Name = "txtSelect";
+            txtSelect.Size = new Size(362, 34);
+            txtSelect.TabIndex = 7;
             // 
             // cbTimTk
             // 
@@ -428,21 +425,14 @@
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = true;
             // 
-            // txtSelect
+            // label6
             // 
-            txtSelect.Location = new Point(17, 268);
-            txtSelect.Name = "txtSelect";
-            txtSelect.Size = new Size(362, 34);
-            txtSelect.TabIndex = 7;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(385, 271);
-            label2.Name = "label2";
-            label2.Size = new Size(228, 28);
-            label2.TabIndex = 8;
-            label2.Text = "Tài khoản chọn giao dịch";
+            label6.AutoSize = true;
+            label6.Location = new Point(19, 141);
+            label6.Name = "label6";
+            label6.Size = new Size(73, 28);
+            label6.TabIndex = 10;
+            label6.Text = "Số tiền";
             // 
             // GiaoDich
             // 
@@ -497,11 +487,10 @@
         private Button btnTim;
         private DataGridView dtTK;
         private Button btnSMS;
-        private Button btnXNID;
         private TextBox textBox2;
-        private TextBox textBox1;
         private ComboBox cbTimTk;
         private Label label2;
         private TextBox txtSelect;
+        private Label label6;
     }
 }

@@ -20,12 +20,13 @@ namespace QLGIAODICH
         CloseandOpenForms closeopen = new CloseandOpenForms();
         Search timkiem;
         CapNhatlichsugiaodich updateLS;
-        
+        TaiKhoanService TK;
         private Form[] listF = new Form[2];
         string tk;
         public GiaoDich()
         {
             updateLS = new CapNhatlichsugiaodich(SQLConnectionstring);
+            TK = new TaiKhoanService(SQLConnectionstring);
             tk = "";
             timkiem = new Search(SQLConnectionstring);
             InitializeComponent();
@@ -70,6 +71,7 @@ namespace QLGIAODICH
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
             string value = txtTaiKhoan.Text.Trim();
+            
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
           
             string query1 = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan AS tk INNER JOIN tblNguoiDung as nd ON tk.IDNguoiDung = nd.IDNguoiDung WHERE CCCD = @value ";
@@ -80,6 +82,12 @@ namespace QLGIAODICH
             }
             else
             {
+                bool kt = TK.KiemTraTonTai(value);
+                if (!kt)
+                {
+                    MessageBox.Show("Tài khoản không tồn tại");
+                    return;
+                }
                 dtTK.DataSource = timkiem.Timkiem(query, value);
             }
         }

@@ -26,8 +26,10 @@ namespace QLGIAODICH
         RandSTK stk;
         RandPassword password;
         RandSTK randcard;
+        TaiKhoanService TK;
         public NguoiDung()
         {
+            TK = new TaiKhoanService(SQLConnectionstring);
             randcard = new RandSTK(SQLConnectionstring);
             password = new RandPassword();
             stk = new RandSTK(SQLConnectionstring);
@@ -38,20 +40,41 @@ namespace QLGIAODICH
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string value = txtSearchStk.Text.Trim();
-
-            string query = @"
+           
+            if (cbTK.Text == "Căn Cước")
+            {
+                string query = @"
+            SELECT nd.IDNguoiDung, nd.TenNguoiDung, nd.Email, nd.SoDienThoai, nd.DiaChi, nd.LoaiNguoiDung, nd.CCCD, nd.NgaySinh
+            FROM tblTaiKhoan tk
+            JOIN tblNguoiDung nd ON tk.IDNguoiDung = nd.IDNguoiDung
+            WHERE nd.CCCD = @value
+            ";
+                string query1 = @"
+            SELECT *
+            FROM tblTaiKhoan tk
+            JOIN tblNguoiDung nd ON tk.IDNguoiDung = nd.IDNguoiDung
+            WHERE nd.CCCD = @value
+          
+            ";
+                dtNguoidung.DataSource = timkiem.Timkiem(query, value);
+                dtTaikhoan.DataSource = timkiem.Timkiem(query1, value);
+            }
+            else
+            {
+                string query = @"
             SELECT nd.IDNguoiDung, nd.TenNguoiDung, nd.Email, nd.SoDienThoai, nd.DiaChi, nd.LoaiNguoiDung, nd.CCCD, nd.NgaySinh
             FROM tblTaiKhoan tk
             JOIN tblNguoiDung nd ON tk.IDNguoiDung = nd.IDNguoiDung
             WHERE tk.SoTaiKhoan = @value
             ";
-            string query1 = @"
+                string query1 = @"
             SELECT *
             FROM tblTaiKhoan tk
             WHERE tk.SoTaiKhoan = @value
             ";
-            dtNguoidung.DataSource = timkiem.Timkiem(query, value);
-            dtTaikhoan.DataSource = timkiem.Timkiem(query1, value);
+                dtNguoidung.DataSource = timkiem.Timkiem(query, value);
+                dtTaikhoan.DataSource = timkiem.Timkiem(query1, value);
+            }
         }
 
         private void NguoiDung_Load(object sender, EventArgs e)

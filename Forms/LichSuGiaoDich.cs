@@ -17,9 +17,11 @@ namespace QLGIAODICH
     public partial class LichSuGiaoDich : Form
     {
         GetTable LichSu;
+        Search timkiem;
         string SQLConnectionstring = @"Data Source=TOANVU;Initial Catalog=QLGIAODICH;Integrated Security=True;Trust Server Certificate=True";
         public LichSuGiaoDich()
         {
+            timkiem = new Search(SQLConnectionstring);
             LichSu = new GetTable(SQLConnectionstring);
             InitializeComponent();
         }
@@ -101,5 +103,80 @@ namespace QLGIAODICH
             string query = $"SELECT * FROM tblGiaoDich";
             LichSu.getdata(query, dtLichsu);
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string tk = txtTK.Text;
+            if (cbLoaiTK.Text == "Căn Cước")
+            {
+                string cccd = txtTK.Text.Trim(); // t
+                DateTime dtFrom = dt1.Value.Date;
+                DateTime dtTo = dt2.Value.Date.AddDays(1).AddTicks(-1); 
+
+                string query = @"
+    SELECT gd.*
+    FROM tblGiaoDich gd
+    JOIN tblTaiKhoan tk1 ON gd.TaiKhoanGui = tk1.SoTaiKhoan
+    JOIN tblNguoiDung nd1 ON tk1.IDNguoiDung = nd1.IDNguoiDung
+    JOIN tblTaiKhoan tk2 ON gd.TaiKhoanNhan = tk2.SoTaiKhoan
+    JOIN tblNguoiDung nd2 ON tk2.IDNguoiDung = nd2.IDNguoiDung
+    WHERE 
+        (nd1.CCCD = @cccd OR nd2.CCCD = @cccd)
+        AND gd.NgayGiaoDich BETWEEN @from AND @to
+    ORDER BY gd.NgayGiaoDich DESC";
+
+                using (SqlConnection con = new SqlConnection(SQLConnectionstring))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@cccd", cccd);
+                        cmd.Parameters.AddWithValue("@from", dtFrom);
+                        cmd.Parameters.AddWithValue("@to", dtTo);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dtLichsu.DataSource = dt;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                string stk = txtTK.Text.Trim();
+                DateTime dtFrom = dt1.Value.Date;
+                DateTime dtTo = dt2.Value.Date.AddDays(1).AddTicks(-1); // lấy đến cuối ngày
+
+                string query = @"
+    SELECT *
+    FROM tblGiaoDich
+    WHERE 
+        (TaiKhoanGui = @stk OR TaiKhoanNhan = @stk)
+        AND NgayGiaoDich BETWEEN @from AND @to
+    ORDER BY NgayGiaoDich DESC";
+
+                using (SqlConnection con = new SqlConnection(SQLConnectionstring))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@stk", stk);
+                        cmd.Parameters.AddWithValue("@from", dtFrom);
+                        cmd.Parameters.AddWithValue("@to", dtTo);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dtLichsu.DataSource = dt;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+

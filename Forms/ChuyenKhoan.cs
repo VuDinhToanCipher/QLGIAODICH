@@ -20,9 +20,10 @@ namespace QLGIAODICH
         CapNhatlichsugiaodich updateLS;
         string tkGui;
         string SQLConnectionstring = @"Data Source=TOANVU;Initial Catalog=QLGIAODICH;Integrated Security=True;Trust Server Certificate=True";
-       
+        TaiKhoanService TK;
         public ChuyenKhoan()
         {
+            TK = new TaiKhoanService(SQLConnectionstring);
             updateLS = new CapNhatlichsugiaodich(SQLConnectionstring);
             timkiem = new Search(SQLConnectionstring);
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace QLGIAODICH
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
             string value = txbTaiKhoan.Text.Trim();
+            
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
             string query1 = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan AS tk INNER JOIN tblNguoiDung as nd ON tk.IDNguoiDung = nd.IDNguoiDung WHERE CCCD = @value ";
             
@@ -49,12 +51,24 @@ namespace QLGIAODICH
             }
             else
             {
+                bool kt = TK.KiemTraTonTai(value);
+                if (!kt)
+                {
+                    MessageBox.Show("Tài khoản không tồn tại");
+                    return;
+                }
                 dtTK.DataSource = timkiem.Timkiem(query, value);
             }
         }
         private void btnSearchTKN_Click_1(object sender, EventArgs e)
         {
             string value = txbTaiKhoanNhan.Text.Trim();
+            bool kt = TK.KiemTraTonTai(value);
+            if (!kt)
+            {
+                MessageBox.Show("Tài khoản không tồn tại");
+                return;
+            }
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
             dtTKN.DataSource = timkiem.Timkiem(query, value);
         }
@@ -71,6 +85,7 @@ namespace QLGIAODICH
         }
         private void btnXacNhan_Click_1(object sender, EventArgs e)
         {
+           
             DialogResult result = MessageBox.Show("Xac nhan",
                "Xac nhan giao dich",
                MessageBoxButtons.YesNo,
@@ -80,6 +95,12 @@ namespace QLGIAODICH
                 
                 string STKN = txbTaiKhoanNhan.Text.Trim();
                 int soTien;
+                if (tkGui.ToString() == STKN)
+                {
+                    MessageBox.Show("Tài khoản nhận và gửi bị trùng");
+                    return;
+                }
+                    
                 if (string.IsNullOrEmpty(txbTaiKhoan.Text) || string.IsNullOrEmpty(txbTaiKhoanNhan.Text))
                 {
                     MessageBox.Show("Nhập số tài khoản để thức hiện giao dịch");
@@ -88,6 +109,12 @@ namespace QLGIAODICH
                 if (!int.TryParse(txbSoTien.Text, out soTien) || soTien <= 0)
                 {
                     MessageBox.Show("Nhập số tiền hợp lệ để thức hiện giao dịch");
+                    return;
+                }
+                bool kt = TK.KiemTraSoDuHopLe(tkGui, soTien);
+                if(!kt)
+                {
+                    MessageBox.Show("Số sư tài khoản không đủ để thực hiện giao dịch");
                     return;
                 }
                 string query = "UPDATE tblTaiKhoan SET SoDu =SoDu + @Sodu WHERE SoTaiKhoan = @SoTaiKhoan ";

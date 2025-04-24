@@ -21,11 +21,14 @@ namespace QLGIAODICH
         string SQLConnectionstring = @"Data Source=TOANVU;Initial Catalog=QLGIAODICH;Integrated Security=True;Trust Server Certificate=True";
         CapNhatlichsugiaodich updateLS;
         Search timkiem;
-        string STK;
+       
+        TaiKhoanService TK;
+        string TKR;
         public RutTien()
         {
+            TK = new TaiKhoanService(SQLConnectionstring);
             updateLS = new CapNhatlichsugiaodich(SQLConnectionstring);
-            STK = "";
+        
             timkiem = new Search(SQLConnectionstring);
             InitializeComponent();
         }
@@ -42,8 +45,25 @@ namespace QLGIAODICH
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string value = txtTaiKhoan.Text.Trim();
+           
             string query = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan WHERE SoTaiKhoan = @value ";
-            dtTK.DataSource = timkiem.Timkiem(query, value);
+
+            string query1 = $"SELECT SoTaiKhoan,TenTaiKhoan, SoDu FROM tblTaiKhoan AS tk INNER JOIN tblNguoiDung as nd ON tk.IDNguoiDung = nd.IDNguoiDung WHERE CCCD = @value ";
+
+            if (cbTimkiem.Text == "Căn Cước")
+            {
+                dtTK.DataSource = timkiem.Timkiem(query1, value);
+            }
+            else
+            {
+                bool kt = TK.KiemTraTonTai(value);
+                if (!kt)
+                {
+                    MessageBox.Show("Tài khoản không tồn tại");
+                    return;
+                }
+                dtTK.DataSource = timkiem.Timkiem(query, value);
+            }
         }
         private void dtTK_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -52,6 +72,8 @@ namespace QLGIAODICH
                 var row = dtTK.Rows[e.RowIndex];
                 lbUserName.Text = row.Cells["TenTaiKhoan"].Value.ToString();
                 lbSTK.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                txtTk.Text = row.Cells["SoTaiKhoan"].Value.ToString();
+                TKR = txtTk.Text;
             }
         }
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
@@ -75,8 +97,8 @@ namespace QLGIAODICH
                 MessageBoxIcon.Question);
 
             decimal sotienrut;
-            STK = txtTaiKhoan.Text.Trim();
-            if (STK.IsNullOrEmpty())
+         
+            if (TKR.IsNullOrEmpty())
             {
                 MessageBox.Show("Hãy nhập số tài khoản để thực hiện giao dịch");
                 return;
@@ -88,6 +110,13 @@ namespace QLGIAODICH
             {
                 MessageBox.Show("Vui lòng nhập số tiền hợp lệ.");
             }
+            bool sodu = TK.KiemTraSoDuHopLe(TKR, sotienrut);
+            if(!sodu)
+            {
+                MessageBox.Show("Tài khoản không đủ để rút");
+                return;
+            }
+
             string query = $"UPDATE tblTaiKhoan SET Sodu -= @Sodu WHERE SoTaiKhoan = @STK ";
             if (result == DialogResult.Yes)
             {
@@ -99,7 +128,7 @@ namespace QLGIAODICH
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
                             cmd.Parameters.AddWithValue("@Sodu", sotienrut);
-                            cmd.Parameters.AddWithValue("@STK", STK);
+                            cmd.Parameters.AddWithValue("@STK", TKR);
                             cmd.ExecuteNonQuery();
                         }
                         MessageBox.Show("Cập nhật số dư thành công!");
@@ -110,7 +139,7 @@ namespace QLGIAODICH
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    updateLS.GDRuttien(STK, sotienrut);
+                    updateLS.GDRuttien(TKR, sotienrut);
                 }
             }
         }

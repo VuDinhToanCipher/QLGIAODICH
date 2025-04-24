@@ -65,7 +65,7 @@
             txtTaiKhoan = new TextBox();
             label12 = new Label();
             cbxCardType = new ComboBox();
-            comboBox1 = new ComboBox();
+            cbTK = new ComboBox();
             pnThemTK = new Panel();
             btnXacNhan = new Button();
             label11 = new Label();
@@ -269,33 +269,33 @@
             // 
             // dtNguoidung
             // 
-            dtNguoidung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtNguoidung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtNguoidung.Location = new Point(0, 26);
+            dtNguoidung.Dock = DockStyle.Fill;
+            dtNguoidung.Location = new Point(3, 23);
             dtNguoidung.Name = "dtNguoidung";
             dtNguoidung.RowHeadersWidth = 51;
-            dtNguoidung.Size = new Size(523, 99);
+            dtNguoidung.Size = new Size(688, 99);
             dtNguoidung.TabIndex = 0;
             dtNguoidung.CellContentClick += dtNguoidung_CellContentClick;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(dtNguoidung);
-            groupBox1.Location = new Point(45, 90);
+            groupBox1.Location = new Point(39, 90);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(532, 125);
+            groupBox1.Size = new Size(694, 125);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Người dùng";
             // 
             // dtTaikhoan
             // 
-            dtTaikhoan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtTaikhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtTaikhoan.Dock = DockStyle.Fill;
             dtTaikhoan.Location = new Point(3, 23);
             dtTaikhoan.Name = "dtTaikhoan";
             dtTaikhoan.RowHeadersWidth = 51;
-            dtTaikhoan.Size = new Size(520, 169);
+            dtTaikhoan.Size = new Size(691, 172);
             dtTaikhoan.TabIndex = 0;
             dtTaikhoan.CellContentClick += dtTaikhoan_CellContentClick;
             // 
@@ -304,7 +304,7 @@
             groupBox2.Controls.Add(dtTaikhoan);
             groupBox2.Location = new Point(39, 237);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(529, 198);
+            groupBox2.Size = new Size(697, 198);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tài khoản";
@@ -317,7 +317,7 @@
             panel1.Controls.Add(label15);
             panel1.Controls.Add(groupBox3);
             panel1.Controls.Add(pnAdd_card);
-            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(cbTK);
             panel1.Controls.Add(pnThemTK);
             panel1.Controls.Add(Addcard);
             panel1.Controls.Add(btnAddAccount);
@@ -364,7 +364,7 @@
             groupBox3.Controls.Add(dtThe);
             groupBox3.Location = new Point(39, 501);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(523, 141);
+            groupBox3.Size = new Size(691, 141);
             groupBox3.TabIndex = 38;
             groupBox3.TabStop = false;
             groupBox3.Text = "Thẻ";
@@ -376,7 +376,7 @@
             dtThe.Location = new Point(3, 23);
             dtThe.Name = "dtThe";
             dtThe.RowHeadersWidth = 51;
-            dtThe.Size = new Size(517, 115);
+            dtThe.Size = new Size(685, 115);
             dtThe.TabIndex = 0;
             // 
             // pnAdd_card
@@ -391,14 +391,14 @@
             pnAdd_card.Controls.Add(cbxCardType);
             pnAdd_card.Location = new Point(16, 726);
             pnAdd_card.Name = "pnAdd_card";
-            pnAdd_card.Size = new Size(525, 198);
+            pnAdd_card.Size = new Size(637, 198);
             pnAdd_card.TabIndex = 37;
             pnAdd_card.Visible = false;
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(38, 123);
+            label14.Location = new Point(37, 114);
             label14.Name = "label14";
             label14.Size = new Size(95, 20);
             label14.TabIndex = 6;
@@ -406,16 +406,16 @@
             // 
             // txtPin
             // 
-            txtPin.Location = new Point(138, 153);
+            txtPin.Location = new Point(152, 114);
             txtPin.Name = "txtPin";
             txtPin.Size = new Size(248, 27);
             txtPin.TabIndex = 5;
             // 
             // btnXn
             // 
-            btnXn.Location = new Point(395, 153);
+            btnXn.Location = new Point(426, 102);
             btnXn.Name = "btnXn";
-            btnXn.Size = new Size(114, 32);
+            btnXn.Size = new Size(104, 32);
             btnXn.TabIndex = 4;
             btnXn.Text = "Xác nhận";
             btnXn.UseVisualStyleBackColor = false;
@@ -424,7 +424,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(32, 66);
+            label13.Location = new Point(32, 59);
             label13.Name = "label13";
             label13.Size = new Size(111, 20);
             label13.TabIndex = 3;
@@ -432,7 +432,7 @@
             // 
             // txtTaiKhoan
             // 
-            txtTaiKhoan.Location = new Point(138, 89);
+            txtTaiKhoan.Location = new Point(149, 59);
             txtTaiKhoan.Name = "txtTaiKhoan";
             txtTaiKhoan.Size = new Size(248, 27);
             txtTaiKhoan.TabIndex = 2;
@@ -450,19 +450,20 @@
             // 
             cbxCardType.FormattingEnabled = true;
             cbxCardType.Items.AddRange(new object[] { "Tín dụng", "Ghi Nợ" });
-            cbxCardType.Location = new Point(138, 19);
+            cbxCardType.Location = new Point(152, 9);
             cbxCardType.Name = "cbxCardType";
             cbxCardType.Size = new Size(248, 28);
             cbxCardType.TabIndex = 0;
             // 
-            // comboBox1
+            // cbTK
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
-            comboBox1.Location = new Point(278, 33);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(124, 28);
-            comboBox1.TabIndex = 9;
+            cbTK.FormattingEnabled = true;
+            cbTK.Items.AddRange(new object[] { "Căn Cước", "Số Tài Khoản" });
+            cbTK.Location = new Point(278, 33);
+            cbTK.Name = "cbTK";
+            cbTK.Size = new Size(124, 28);
+            cbTK.TabIndex = 9;
+            cbTK.Text = "Số Tâi Khoản";
             // 
             // pnThemTK
             // 
@@ -669,7 +670,7 @@
         private Label label11;
         private Label label8;
         private TextBox txtBalance;
-        private ComboBox comboBox1;
+        private ComboBox cbTK;
         private Panel pnAdd_card;
         private Label label13;
         private TextBox txtTaiKhoan;

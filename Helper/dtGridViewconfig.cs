@@ -30,7 +30,7 @@ namespace QLGIAODICH.Helper
             dt.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             //can chinh
             dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
             dt.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dt.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
